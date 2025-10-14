@@ -1,0 +1,77 @@
+.short-url-link {
+    color: #2b6cb0;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-decoration: none;
+    border-bottom: 2px solid #2b6cb0;
+    padding: 2px 4px;
+    transition: all 0.3s;
+}
+
+.short-url-link:hover {
+    background-color: #ebf8ff;
+    border-radius: 4px;
+}
+
+.test-btn {
+    background: #38a169;
+    padding: 10px 20px;
+    font-size: 14px;
+    margin: 5px;
+}
+
+.test-btn:hover {
+    background: #2f855a;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.url-info {
+    background: #f7fafc;
+    padding: 10px;
+    border-radius: 6px;
+    margin: 10px 0;
+    border-left: 4px solid #4299e1;
+}
+
+.test-redirect {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed #cbd5e0;
+}
+
+/* Улучшаем отображение ссылок в результатах */
+.result a {
+    color: #2b6cb0;
+    text-decoration: none;
+    word-break: break-all;
+}
+
+.result a:hover {
+    text-decoration: underline;
+}
+
+/* Анимация для кнопок */
+button {
+    transition: all 0.3s ease;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Улучшаем отображение на мобильных */
+@media (max-width: 600px) {
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .short-url-link {
+        font-size: 1rem;
+    }
+}

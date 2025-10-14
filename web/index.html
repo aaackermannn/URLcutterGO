@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="script" href="script.js"
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔗 URL Shortener</h1>
+            <p>Сокращайте длинные ссылки быстро и бесплатно</p>
+        </header>
+
+        <main>
+            <section class="shorten-section">
+                <h2>Создать короткую ссылку</h2>
+                <form id="shortenForm">
+                    <div class="input-group">
+                        <input type="url" id="urlInput" placeholder="Введите URL (например: https://example.com)" required>
+                        <button type="submit">Сократить</button>
+                    </div>
+                </form>
+                <div id="result" class="result"></div>
+            </section>
+
+            <section class="lookup-section">
+                <h2>Найти оригинальную ссылку</h2>
+                <form id="lookupForm">
+                    <div class="input-group">
+                        <input type="text" id="shortCodeInput" placeholder="Введите короткий код (например: abc123)" required>
+                        <button type="submit">Найти</button>
+                    </div>
+                </form>
+                <div id="lookupResult" class="result"></div>
+            </section>
+
+            <section class="redirect-section">
+                <h2>Тестирование редиректа</h2>
+                <div class="input-group">
+                    <input type="text" id="redirectInput" placeholder="Введите короткий код для теста">
+                    <button onclick="testRedirect()">Тестировать редирект</button>
+                </div>
+                <div id="redirectResult" class="result"></div>
+            </section>
+
+            <section class="status-section">
+                <h2>Статус системы</h2>
+                <div class="status-item">
+                    <span>Сервер API:</span>
+                    <span id="apiStatus" class="status offline">Проверка...</span>
+                </div>
+                <div class="status-item">
+                    <span>База данных:</span>
+                    <span id="dbStatus" class="status offline">Проверка...</span>
+                </div>
+                <button onclick="checkHealth()">Обновить статус</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

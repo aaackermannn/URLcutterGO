@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16
+    container_name: urlcutter-db
+    environment:
+      POSTGRES_USER: urluser
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: url_shortener
+      POSTGRES_INITDB_ARGS: "--auth-host=scram-sha-256 --auth-local=trust"
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: urlcutter-app
+    depends_on:
+      - db
+    environment:
+      PGUSER: urluser
+      PGPASSWORD: password
+      PGHOST: db
+      PGPORT: "5432"
+      PGDATABASE: url_shortener
+      PGSSLMODE: disable
+    ports:
+      - "8080:8080"
+
+volumes:
+  db_data: {}
+
+
