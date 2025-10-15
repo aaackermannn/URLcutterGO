@@ -95,17 +95,6 @@ docker build -t urlcutter-app .
 docker run --rm -p 8080:8080 --name urlcutter-app urlcutter-app
 ```
 
-Замечание: контейнерное приложение — это бинарь, собранный из `cmd/main.go`. Он ожидает MySQL на `localhost:3306`, так что для корректной работы либо пробрасывайте сеть/хост, либо поднимайте MySQL в той же сети Docker и меняйте DSN на сервисное имя контейнера БД.
-
-
-Переменные окружения (рекомендуется вынести)
-
-Сейчас DSN зашит строкой в `cmd/main.go`. Для продакшен‑подхода вынесите настройки в переменные окружения и читайте их в `main`:
-
-- `DB_DRIVER` — `mysql` или `postgres`
-- `DB_DSN` — строка подключения (например, `urluser:password@tcp(db:3306)/url_shortener?parseTime=true` для MySQL в Docker)
-
-
 Тесты
 
 - Юнит‑тесты для сервиса/хендлеров находятся в `internal/service/service_test.go`, `internal/handler/handler_test.go`.
@@ -114,16 +103,6 @@ docker run --rm -p 8080:8080 --name urlcutter-app urlcutter-app
   ```bash
   go test ./...
   ```
-
-
-Известные моменты и будущие улучшения
-
-- Привести к единому стеку БД: либо везде MySQL, либо везде PostgreSQL
-- Вынести конфигурацию БД в переменные окружения и `docker-compose`
-- Добавить миграции (например, с помощью `golang-migrate`)
-- Собрать единый `main` на базе `internal/*` с DI и конфигом
-- Улучшить обработку ошибок и ответы API (коды/структуры)
-
 
 Лицензия
 
